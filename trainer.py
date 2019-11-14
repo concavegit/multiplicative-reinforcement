@@ -66,7 +66,7 @@ def main():
                         help='The file to populate with results.')
     args = parser.parse_args()
 
-    with open(args.filename, 'w+') as filename:
+    with open(args.filename, 'a+') as filename:
         if os.stat(args.filename).st_size == 0:
             filename.write('num1,num2,time\n')
         while True:
