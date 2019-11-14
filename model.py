@@ -9,7 +9,7 @@ def train_model(table):
     """Train a model to guess how long it would take to fill in the
     missing multiplication table entries.
     """
-    nmf = NMF(3)
+    nmf = NMF(3, init='random', solver='mu')
     nmf.fit(table)
     return nmf
 
@@ -26,7 +26,7 @@ def to_table(data):
     num_rows = data.num1.max() + 1
     num_cols = data.num2.max() + 1
     matrix = np.empty((num_rows, num_cols))
-    matrix[:] = 0
+    matrix[:] = np.nan
     matrix[data.num1, data.num2] = data.time
     return matrix
 
