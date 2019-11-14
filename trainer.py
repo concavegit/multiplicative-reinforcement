@@ -37,7 +37,8 @@ def prompt_problem(upperbound):
     num1 = random.randint(0, upperbound)
     num2 = random.randint(0, upperbound)
 
-    prompt = f'{num1} x {num2}\n>>> '
+    # prompt = f'{num1} x {num2}\n>>> '
+    prompt = '{} x {}\n>>> '.format(num1,num2)
     start = time.time()
     answer = int(input(prompt))
     while answer != num1 * num2:
@@ -71,7 +72,7 @@ def main():
             filename.write('num1,num2,time\n')
         while True:
             result = prompt_problem(args.upperbound)
-            filename.write(f'{result.num1},{result.num2},{result.elapsed}\n')
+            filename.write('{},{},{}\n'.format(result.num1,result.num2,result.elapsed))
 
 
 if __name__ == '__main__':
