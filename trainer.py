@@ -61,7 +61,7 @@ def main():
         ' correct answer is reached.')
     parser.add_argument('upperbound', metavar='N',
                         help='Upperbound of the numbers to be multiplied.',
-                        type=int)
+                        default=20, type=int, nargs='?')
     parser.add_argument('-f', dest='filename', default='data.csv',
                         help='The file to populate with results.')
     args = parser.parse_args()
