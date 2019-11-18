@@ -45,6 +45,7 @@ def main():
     print(trained_model.components_)
     print(training_data)
     print(reconstructed)
+    np.savetxt("table.csv",training_table,delimiter=",")
 
 
 if __name__ == '__main__':
