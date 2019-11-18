@@ -21,7 +21,11 @@ import random
 import collections
 
 
-def prompt_problem(upperbound):
+def generate_problem(upperbound):
+    return random.randint(0, upperbound), random.randint(0, upperbound)
+
+
+def prompt_problem(problem):
     """Displays a multiplication problem and waits until the correct
     answer is entered.
 
@@ -34,21 +38,35 @@ def prompt_problem(upperbound):
         num2 (int): The second number in the multiplication problem.
         elapsed (float): The time taken to solve the probleem.
     """
-    num1 = random.randint(0, upperbound)
-    num2 = random.randint(0, upperbound)
-
-    # prompt = f'{num1} x {num2}\n>>> '
-    prompt = '{} x {}\n>>> '.format(num1,num2)
+    num1, num2 = problem
+    prompt = f'{num1} x {num2}\n>>> '
     start = time.time()
     answer = int(input(prompt))
+
     while answer != num1 * num2:
         answer = int(input(prompt))
+
     elapsed = time.time() - start
     results = collections.namedtuple('Result', ['num1', 'num2', 'elapsed'])
     results.num1 = num1
     results.num2 = num2
     results.elapsed = elapsed
     return results
+
+
+def log_problem(problem, filename):
+    """Prompt a problem and append the result to the specified file.
+
+    Args:
+        upperbound (int): The upperbound of the numbers to multiply.
+        filename (string): The filename of the file to write the results to.
+    """
+    result = prompt_problem(problem)
+
+    with open(filename, 'a+') as logfile:
+        if os.stat(filename).st_size == 0:
+            logfile.write('num1,num2,elapsed\n')
+        logfile.write(f'{result.num1},{result.num2},{result.elapsed}\n')
 
 
 def main():
@@ -67,12 +85,8 @@ def main():
                         help='The file to populate with results.')
     args = parser.parse_args()
 
-    with open(args.filename, 'a+') as filename:
-        if os.stat(args.filename).st_size == 0:
-            filename.write('num1,num2,time\n')
-        while True:
-            result = prompt_problem(args.upperbound)
-            filename.write('{},{},{}\n'.format(result.num1,result.num2,result.elapsed))
+    while True:
+        log_problem(generate_problem(args.upperbound), args.filename)
 
 
 if __name__ == '__main__':
