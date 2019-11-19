@@ -1,6 +1,9 @@
 import numpy as np
 
 def factorization(n):
+	"""
+	input a number to get a matrix describing factors of 2, 3, 5, 7, whether the number is 1, and the number itself.
+	"""
 	arr = []
 	for i in range(n):
 		onenumber = []
