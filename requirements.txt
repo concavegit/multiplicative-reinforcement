@@ -1,4 +1,5 @@
-git+git://github.com/tomdlt/scikit-learn.git@nmf_missing
+Cython
 numpy
 pandas
 sklearn
+git+git://github.com/tomdlt/scikit-learn.git@nmf_missing
