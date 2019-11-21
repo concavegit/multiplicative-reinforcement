@@ -67,7 +67,7 @@ def reconstruct_table(table):
     return reconstructed
 
 
-def plot_table(table, axes=plt.gca()):
+def plot_table(table, axes):
     """Given a table, plot the time taken to solve each problem.
 
     Args:

@@ -1,5 +1,5 @@
 Cython
 numpy
 pandas
-sklearn
+matplotlib
 git+git://github.com/tomdlt/scikit-learn.git@nmf_missing
