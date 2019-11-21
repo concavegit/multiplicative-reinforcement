@@ -68,7 +68,7 @@ def main():
     training_table = model.to_table(training_data)
     representation = factorization2(21)
     matrix1, matrix2 = learn_constrained_features(
-        training_table, representation, 4)
+        training_table, representation, 6)
     reconstructed = representation.dot(
         matrix1).dot(matrix2).dot(representation.T)
     print(matrix1)
