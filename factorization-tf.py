@@ -89,11 +89,11 @@ for epoch in range(50000):
         tf.summary.scalar('gradient', tf.norm(gradients), step=epoch)
         tf.summary.scalar('loss', loss, step=epoch)
     if epoch % 1000 == 0:
-        table_figure, table_axes = plt.subplots(figsize=(20, 20))
+        table_figure, table_axes = plt.subplots(figsize=(10, 10))
         model.plot_table(reconstructed, table_axes)
         image = plot_to_image(table_figure)
 
-        matrix_figure, matrix_axes = plt.subplots(1, 2, figsize=(20, 20))
+        matrix_figure, matrix_axes = plt.subplots(1, 2, figsize=(8, 8))
         model.plot_table(matrix1, matrix_axes[0], False)
         model.plot_table(matrix2, matrix_axes[1], False)
         matrix_image = plot_to_image(matrix_figure)
